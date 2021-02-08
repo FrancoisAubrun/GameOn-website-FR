@@ -44,9 +44,20 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+// launch alert
+
+function launchAlert() {
+  bground_alert.style.display = "block";
+  }
+
+  function closeAlert () {
+    bground_alert.style.display = "none";
+}
+
 //validate form
 
 let expressionMail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+let expressionBirthDate =  /^([0-9]{2}) \/ ([0-9]{2}) \/ ([0-9]{4})$/;
 
 function validate(event) {
   event.preventDefault();
@@ -71,6 +82,14 @@ function validate(event) {
       "Veuillez remplir ce champs avec une adresse mail valide";
   } else {
     document.getElementById("text-control_error_mail").innerHTML = "";
+    validationCount ++;
+  }
+
+  if (!birthDate.value.match(expressionBirthDate)) {
+    document.getElementById("text-control_error_birthdate").innerHTML =
+      "Veuillez remplir ce champs avec votre date de naissance";
+  } else {
+    document.getElementById("text-control_error_birthdate").innerHTML = "";
     validationCount ++;
   }
 
@@ -105,98 +124,10 @@ function validate(event) {
     validationCount ++;
   }
   
-  if (validationCount=6) {
-    
+  console.log(validationCount)
+
+  if (validationCount = 7) {
+    closeModal();
+    launchAlert;   
+  } 
   }
-}
-
-
-
-
-/* function lastValidation() {
-  if (firstName.value === "" || firstName.value.length < 2) {
-    document.getElementById("text-control_error_first").innerHTML =
-      "Veuillez remplir ce champs d'au moins 2 caractères";
-    return false;
-  } else {
-    document.getElementById("text-control_error_first").innerHTML = "";
-    return true;
-  }
-}
-
-function firstValidation() {
-  if (lastName.value === "" || lastName.value.length < 2) {
-    document.getElementById("text-control_error_last").innerHTML =
-      "Veuillez remplir ce champs d'au moins 2 caractères";
-    return false;
-  } else {
-    document.getElementById("text-control_error_last").innerHTML = "";
-    return true;
-  }
-}
-
-let expressionMail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-function mailValidation() {
-  if (!eMail.value.match(expressionMail)) {
-    document.getElementById("text-control_error_mail").innerHTML =
-      "Veuillez remplir ce champs avec une adresse mail valide";
-    return false;
-  } else {
-    document.getElementById("text-control_error_mail").innerHTML = "";
-    return true;
-  }
-}
-
-function quantityValidation() {
-  if (quantityTournament.value === "") {
-    document.getElementById("text-control_error_quantity").innerHTML =
-      "Veuillez remplir ce champs d'un nombre supérieure ou égale à 0";
-    return false;
-  } else {
-    document.getElementById("text-control_error_quantity").innerHTML = "";
-    return true;
-  }
-}
-
-function checkBoxValidation() {
-  if (
-    !loc1.checked &&
-    !loc2.checked &&
-    !loc3.checked &&
-    !loc4.checked &&
-    !loc5.checked &&
-    !loc6.checked
-  ) {
-    document.getElementById("text-control_error_checked").innerHTML =
-      "Veuillez choisir l'une de ces villes";
-    return false;
-  } else {
-    document.getElementById("text-control_error_checked").innerHTML = "";
-    return true;
-  }
-}
-
-function checkBox2Validation() {
-  if (!checkbox2checked) {
-    document.getElementById("text-control_error_checked1").innerHTML =
-      "Veuillez accepter les conditions d'utilisation avant soumission du formulaire";
-    return false;
-  } else {
-    document.getElementById("text-control_error_checked1").innerHTML = "";
-    return true;
-  }
-}
-
-function validate(event) {
-  event.preventDefault();
-
-  if (
-    (firstValidation = true && lastValidation = true && mailValidation = true &&
-    quantityValidation = true && checkBoxValidation = true)
-  ) {
-    form.submit();
-  }
-}*/
-
-// form label
