@@ -24,6 +24,9 @@ const loc3 = document.getElementById("location3");
 const loc4 = document.getElementById("location4");
 const loc5 = document.getElementById("location5");
 const loc6 = document.getElementById("location6");
+const bgroundAlert = document.querySelector(".bground_alert");
+const btnSubmit = document.querySelector(".btn-submit");
+
 
 /* EVENTS */
 
@@ -44,20 +47,9 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-// launch alert
-
-function launchAlert() {
-  bground_alert.style.display = "block";
-  }
-
-  function closeAlert () {
-    bground_alert.style.display = "none";
-}
-
 //validate form
 
 let expressionMail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-let expressionBirthDate =  /^([0-9]{2}) \/ ([0-9]{2}) \/ ([0-9]{4})$/;
 
 function validate(event) {
   event.preventDefault();
@@ -68,29 +60,29 @@ function validate(event) {
       "Veuillez remplir ce champs d'au moins 2 caractères";
   } else {
     document.getElementById("text-control_error_first").innerHTML = "";
-    validationCount ++;
+    validationCount++;
   }
   if (lastName.value === "" || lastName.value.length < 2) {
     document.getElementById("text-control_error_last").innerHTML =
       "Veuillez remplir ce champs d'au moins 2 caractères";
   } else {
     document.getElementById("text-control_error_last").innerHTML = "";
-    validationCount ++;
+    validationCount++;
   }
   if (!eMail.value.match(expressionMail)) {
     document.getElementById("text-control_error_mail").innerHTML =
       "Veuillez remplir ce champs avec une adresse mail valide";
   } else {
     document.getElementById("text-control_error_mail").innerHTML = "";
-    validationCount ++;
+    validationCount++;
   }
 
-  if (!birthDate.value.match(expressionBirthDate)) {
+  if (birthDate.value.length === 0) {
     document.getElementById("text-control_error_birthdate").innerHTML =
       "Veuillez remplir ce champs avec votre date de naissance";
   } else {
     document.getElementById("text-control_error_birthdate").innerHTML = "";
-    validationCount ++;
+    validationCount++;
   }
 
   if (quantityTournament.value === "") {
@@ -98,7 +90,7 @@ function validate(event) {
       "Veuillez remplir ce champs d'un nombre supérieure ou égale à 0";
   } else {
     document.getElementById("text-control_error_quantity").innerHTML = "";
-    validationCount ++;
+    validationCount++;
   }
 
   if (
@@ -113,7 +105,7 @@ function validate(event) {
       "Veuillez choisir l'une de ces villes";
   } else {
     document.getElementById("text-control_error_checked").innerHTML = "";
-    validationCount ++;
+    validationCount++;
   }
 
   if (!checkbox1.checked) {
@@ -121,13 +113,24 @@ function validate(event) {
       "Veuillez accepter les conditions d'utilisation avant soumission du formulaire";
   } else {
     document.getElementById("text-control_error_checked1").innerHTML = "";
-    validationCount ++;
+    validationCount++;
   }
-  
-  console.log(validationCount)
 
-  if (validationCount = 7) {
-    closeModal();
-    launchAlert;   
-  } 
+  if (validationCount === 7) {
+      // launch alert
+
+      btnSubmit.addEventListener("click", launchAlert);
+
+      function launchAlert() {
+        closeModal();
+        bgroundAlert.style.display = "block";
+      }
+
+    closeModalBtn.forEach((elt) => elt.addEventListener("click", closeAlert));
+
+     function closeAlert() {
+      bgroundAlert.style.display = "none"; 
+    }
+    
   }
+}

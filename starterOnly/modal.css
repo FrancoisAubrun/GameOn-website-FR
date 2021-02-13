@@ -552,9 +552,8 @@ footer {
 }
 
 .content_alert {
-  margin: 5% auto;
-  width: 100%;
-  max-width: 500px;
+  margin: 22% auto;
+  max-width: 700px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
@@ -562,7 +561,13 @@ footer {
   overflow: hidden;
   position: relative;
   color: #fff;
-  padding-top: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.text_alert {
+  font-weight: normal;
+  font-size: 20px;
 }
 
 .modal-body {
