@@ -553,7 +553,7 @@ footer {
 
 .content_alert {
   margin: 22% auto;
-  max-width: 700px;
+  max-width: 800px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
@@ -568,6 +568,8 @@ footer {
 .text_alert {
   font-weight: normal;
   font-size: 20px;
+  text-align: center;
+
 }
 
 .modal-body {

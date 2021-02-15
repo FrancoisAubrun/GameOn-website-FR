@@ -26,6 +26,9 @@ const loc5 = document.getElementById("location5");
 const loc6 = document.getElementById("location6");
 const bgroundAlert = document.querySelector(".bground_alert");
 const btnSubmit = document.querySelector(".btn-submit");
+document.getElementById("close_alert").addEventListener("click", function () {
+  bgroundAlert.style.display = "none";
+});
 
 
 /* EVENTS */
@@ -77,9 +80,15 @@ function validate(event) {
     validationCount++;
   }
 
+  const dif = new Date().getTime() - new Date(birthDate.value).getTime();
+
   if (birthDate.value.length === 0) {
     document.getElementById("text-control_error_birthdate").innerHTML =
       "Veuillez remplir ce champs avec votre date de naissance";
+      
+  } else if (dif < 0) {
+    document.getElementById("text-control_error_birthdate").innerHTML =
+      "Veuillez remplir une date antérieure à la date du jour";
   } else {
     document.getElementById("text-control_error_birthdate").innerHTML = "";
     validationCount++;
@@ -117,20 +126,12 @@ function validate(event) {
   }
 
   if (validationCount === 7) {
-      // launch alert
-
-      btnSubmit.addEventListener("click", launchAlert);
-
-      function launchAlert() {
-        closeModal();
-        bgroundAlert.style.display = "block";
-      }
-
-    closeModalBtn.forEach((elt) => elt.addEventListener("click", closeAlert));
-
-     function closeAlert() {
-      bgroundAlert.style.display = "none"; 
-    }
-    
+    // launch alert
+    launchAlert();
   }
+}
+
+function launchAlert() {
+  closeModal();
+  bgroundAlert.style.display = "block";
 }
