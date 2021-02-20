@@ -492,6 +492,7 @@ footer {
   .hero-section {
     display: block;
     box-shadow: unset;
+    height:100%;
   }
   .hero-content {
     background: #fff;
@@ -505,12 +506,14 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 4.3rem;
     white-space: normal;
+    overflow-x:visible;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    width:80%;
   }
   .hero-img img {
     border-radius: 10px;
@@ -525,7 +528,8 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
-}
+
+
 
 @keyframes modalopen {
   from {
@@ -564,6 +568,13 @@ footer {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+@media screen and (max-width: 800px) {
+  .content_alert {
+  padding-top: 50px;
+}
+}
+
 
 .text_alert {
   font-weight: normal;
